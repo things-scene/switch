@@ -12,7 +12,8 @@ export default {
     top: 10,
     width: 100,
     height: 40,
-    fillStyle: "cyan",
-    strokeStyle: "darkgray"
+    thumbnailColor: "#ffffff",
+    onColor: "#2196f3",
+    offColor: "#cccccc"
   }
 };

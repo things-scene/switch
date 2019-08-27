@@ -31,7 +31,7 @@ class SimpleSwitchElement extends LitElement {
         cursor: pointer;
         width: var(--fullwidth);
         height: var(--fullheight);
-        top: calc(0 - var(--thumb-size));
+        top: calc(0 - var(--thumbnail-size));
         left: 0;
         background-color: var(--off-color, #ccc);
         -webkit-transition: 0.4s;
@@ -41,11 +41,11 @@ class SimpleSwitchElement extends LitElement {
       span:before {
         position: absolute;
         content: "";
-        height: calc(var(--thumb-size) - 8px);
-        width: calc(var(--thumb-size) - 8px);
+        height: calc(var(--thumbnail-size) - 8px);
+        width: calc(var(--thumbnail-size) - 8px);
         left: 4px;
         top: 4px;
-        background-color: var(--thumb-color, white);
+        background-color: var(--thumbnail-color, white);
         -webkit-transition: 0.4s;
         transition: 0.4s;
       }
@@ -54,28 +54,26 @@ class SimpleSwitchElement extends LitElement {
         background-color: var(--on-color, #2196f3);
       }
 
-      input:focus + span {
-        box-shadow: 0 0 1px #2196f3;
-      }
-
       input:checked + span:before {
         -webkit-transform: translateX(
-            calc(var(--fullwidth) - var(--thumb-size))
+            calc(var(--fullwidth) - var(--thumbnail-size))
           )
-          translateY(calc(var(--fullheight) - var(--thumb-size)));
-        -ms-transform: translateX(calc(var(--fullwidth) - var(--thumb-size)))
-          translateY(calc(var(--fullheight) - var(--thumb-size)));
-        transform: translateX(calc(var(--fullwidth) - var(--thumb-size)))
-          translateY(calc(var(--fullheight) - var(--thumb-size)));
+          translateY(calc(var(--fullheight) - var(--thumbnail-size)));
+        -ms-transform: translateX(
+            calc(var(--fullwidth) - var(--thumbnail-size))
+          )
+          translateY(calc(var(--fullheight) - var(--thumbnail-size)));
+        transform: translateX(calc(var(--fullwidth) - var(--thumbnail-size)))
+          translateY(calc(var(--fullheight) - var(--thumbnail-size)));
       }
 
       /* Rounded sliders */
       span[round] {
-        border-radius: calc(var(--thumb-size) / 2);
+        border-radius: calc(var(--thumbnail-size) / 2);
       }
 
       span[round]:before {
-        border-radius: calc((var(--thumb-size) - 8px) / 2);
+        border-radius: calc((var(--thumbnail-size) - 8px) / 2);
       }
     `;
   }
@@ -93,7 +91,7 @@ class SimpleSwitchElement extends LitElement {
     this.shadowRoot.addEventListener("change", e => {
       this.value = e.target.checked;
       this.dispatchEvent(
-        new CustomEvent("change", {
+        new CustomEvent("value-change", {
           detail: this.value
         })
       );

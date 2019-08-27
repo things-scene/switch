@@ -29,8 +29,8 @@ const NATURE = {
     },
     {
       type: "color",
-      label: "thumb-color",
-      name: "thumbColor"
+      label: "thumbnail-color",
+      name: "thumbnailColor"
     }
   ],
   "value-property": "value"
@@ -45,7 +45,7 @@ export default class SimpleSwitch extends HTMLOverlayElement {
   }
 
   oncreate_element(toggle) {
-    toggle.addEventListener("change", e => {
+    toggle.addEventListener("value-change", e => {
       this.set("value", e.detail);
     });
   }
@@ -61,14 +61,15 @@ export default class SimpleSwitch extends HTMLOverlayElement {
    * ThingsComponent state => HTML element properties
    */
   setElementProperties(toggle) {
-    var { round, value, onColor, offColor, thumbColor } = this.state;
+    var { round, value, onColor, offColor, thumbnailColor } = this.state;
 
     toggle.round = round;
     toggle.value = value;
 
-    toggle.style.setProperty("--on-color", onColor);
-    toggle.style.setProperty("--off-color", offColor);
-    toggle.style.setProperty("--thumb-color", thumbColor);
+    onColor && toggle.style.setProperty("--on-color", onColor);
+    offColor && toggle.style.setProperty("--off-color", offColor);
+    thumbnailColor &&
+      toggle.style.setProperty("--thumbnail-color", thumbnailColor);
 
     this.data = value;
   }
@@ -80,13 +81,20 @@ export default class SimpleSwitch extends HTMLOverlayElement {
   reposition() {
     super.reposition();
 
-    // TODO how to resize..
     var element = this.element;
+
+    if (!element) {
+      return;
+    }
+
     var { height, width } = this.bounds;
 
     element.style.setProperty("--fullwidth", `${width}px`);
     element.style.setProperty("--fullheight", `${height}px`);
-    element.style.setProperty("--thumb-size", `${Math.min(height, width)}px`);
+    element.style.setProperty(
+      "--thumbnail-size",
+      `${Math.min(height, width)}px`
+    );
   }
 
   get tagName() {
