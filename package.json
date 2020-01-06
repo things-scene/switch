@@ -1,7 +1,7 @@
 {
   "name": "@things-scene/switch",
   "description": "switch component for things-scene",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "things-scene": true,
   "main": "src/index.js",
   "module": "dist/things-scene-switch.mjs",
@@ -17,8 +17,8 @@
     "migration": "things-factory-migration"
   },
   "devDependencies": {
-    "@things-factory/board-app": "*",
-    "@things-factory/board-test": "*",
+    "@things-factory/board-app": "^2.0.0",
+    "@things-factory/board-test": "^2.0.0",
     "@things-scene/form": "*",
     "@things-scene/random": "*",
     "@things-scene/restful": "*",
