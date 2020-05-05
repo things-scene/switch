@@ -46,10 +46,11 @@ export default class SimpleSwitch extends HTMLOverlayElement {
 
   oncreate_element(toggle) {
     toggle.addEventListener("value-change", (e) => {
+      var checked = e.detail;
+
       this.set({
-        value: e.detail,
-        // 사용자 클릭에 의해서 상태가 바뀌는 경우, data도 변경시켜준다.
-        data: e.detail,
+        value: checked,
+        data: checked,
       });
     });
   }
