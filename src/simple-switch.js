@@ -46,7 +46,11 @@ export default class SimpleSwitch extends HTMLOverlayElement {
 
   oncreate_element(toggle) {
     toggle.addEventListener("value-change", (e) => {
-      this.set("value", e.detail);
+      this.set({
+        value: e.detail,
+        // 사용자 클릭에 의해서 상태가 바뀌는 경우, data도 변경시켜준다.
+        data: e.detail,
+      });
     });
   }
 
@@ -70,8 +74,6 @@ export default class SimpleSwitch extends HTMLOverlayElement {
     offColor && toggle.style.setProperty("--off-color", offColor);
     thumbnailColor &&
       toggle.style.setProperty("--thumbnail-color", thumbnailColor);
-
-    this.data = value;
   }
 
   /*
