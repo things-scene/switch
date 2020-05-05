@@ -10,30 +10,30 @@ const NATURE = {
     {
       type: "checkbox",
       label: "round",
-      name: "round"
+      name: "round",
     },
     {
       type: "checkbox",
       label: "on/off",
-      name: "value"
+      name: "value",
     },
     {
       type: "color",
       label: "on-color",
-      name: "onColor"
+      name: "onColor",
     },
     {
       type: "color",
       label: "off-color",
-      name: "offColor"
+      name: "offColor",
     },
     {
       type: "color",
       label: "thumbnail-color",
-      name: "thumbnailColor"
-    }
+      name: "thumbnailColor",
+    },
   ],
-  "value-property": "value"
+  "value-property": "value",
 };
 
 import { Component, HTMLOverlayElement, error } from "@hatiolab/things-scene";
@@ -45,7 +45,7 @@ export default class SimpleSwitch extends HTMLOverlayElement {
   }
 
   oncreate_element(toggle) {
-    toggle.addEventListener("value-change", e => {
+    toggle.addEventListener("value-change", (e) => {
       this.set("value", e.detail);
     });
   }
@@ -64,7 +64,7 @@ export default class SimpleSwitch extends HTMLOverlayElement {
     var { round, value, onColor, offColor, thumbnailColor } = this.state;
 
     toggle.round = round;
-    toggle.value = value;
+    toggle.value = "true" == String(value);
 
     onColor && toggle.style.setProperty("--on-color", onColor);
     offColor && toggle.style.setProperty("--off-color", offColor);
