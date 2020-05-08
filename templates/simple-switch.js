@@ -1,4 +1,4 @@
-import icon from "./simple-switch.png";
+import icon from "../assets/icon-simple-switch.png";
 
 export default {
   type: "simple-switch",
